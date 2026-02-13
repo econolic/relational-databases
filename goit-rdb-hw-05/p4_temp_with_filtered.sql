@@ -1,0 +1,14 @@
+USE hw03;
+
+WITH temp AS (
+	SELECT
+		order_id,
+		quantity
+	FROM order_details
+	WHERE quantity > 10
+)
+SELECT
+	temp.order_id,
+	AVG(temp.quantity) AS avg_quantity
+FROM temp
+GROUP BY temp.order_id;
